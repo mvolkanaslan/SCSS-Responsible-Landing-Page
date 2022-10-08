@@ -28,7 +28,6 @@ textarea {
   font-family: inherit;
   font-size: 100%;
   line-height: inherit;
-
 }
 
 img,
@@ -61,7 +60,6 @@ object {
   text-decoration: inherit;
   font-weight: 400;
   max-width: max-content;
-
   &:hover {
     background-color: #f6866a;
   }
@@ -74,6 +72,40 @@ object {
   max-width: 85%;
   margin: auto;
   padding: 1.5rem;
+  position: relative;
+
+  // -------------------Hamburger Menu-----------------------
+  .hamburger-menu {
+    flex-direction: column;
+    position: absolute;
+    width: 80%;
+    align-self: center;
+    background-color: #fff;
+    top: 80px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    ul {
+      padding: 1rem 0px;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      text-align: center;
+      li {
+        padding: 0.5rem 0px;
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.15);
+        }
+        > a {
+          text-decoration: none;
+          color: black;
+          font-weight: 700;
+        }
+      }
+    }
+  }
+  // ----------------End of Hamburger Menu-------------------
+
   // ---------------------Navbar---------------------------
   .navbar {
     display: flex;
@@ -100,10 +132,18 @@ object {
     > a {
       @extend .btn;
     }
-  }
-  //-------------------Navber - End------------------------
+    .hamburger {
+      display: none;
 
-  //------------------------Hero---------------------------
+      > span {
+        border: 1px solid black;
+        transition: 500ms;
+      }
+    }
+  }
+  //---------------------Navber - End----------------------
+
+  //-------------------------Hero--------------------------
   .hero {
     display: flex;
     .left-hero {
@@ -131,9 +171,9 @@ object {
       width: 50%;
     }
   }
-  //------------------end 0f Hero -------------------------
+  //---------------------end 0f Hero-----------------------
 
-  //----------------------Features-------------------------
+  //-----------------------Features------------------------
   .features {
     display: flex;
     margin-top: 6rem;
@@ -195,7 +235,7 @@ object {
       }
     }
   }
-  //------------------end of features----------------------
+  //--------------------end of features--------------------
   .testimonials {
     display: flex;
     flex-direction: column;
@@ -308,11 +348,14 @@ footer {
         height: 2rem;
       }
       .social-icons {
-
+        cursor: pointer;
         display: flex;
         gap: 1rem;
         img {
           height: 2rem;
+          &:hover {
+            transform: scale(1.1);
+          }
         }
       }
     }
@@ -347,8 +390,8 @@ footer {
           border-radius: 100px;
           padding: 8px 24px;
           color: $darkGrayishBlue;
-          &:focus{
-            outline-style: none
+          &:focus {
+            outline-style: none;
           }
         }
         a {
@@ -358,11 +401,32 @@ footer {
       }
     }
   }
-  .copy-right{
+  .copy-right {
     display: flex;
     justify-content: center;
     padding: 2rem;
-    
+  }
+}
+
+.show {
+  display: flex;
+}
+.hidden {
+  display: none;
+}
+
+.open {
+  transform: translateY(-5px);
+  span:first-child {
+    transform: rotate(45deg) translateY(5px) translate(5px);
+    transition: 500ms;
+  }
+  span:last-child {
+    transform: rotate(-45deg) translateY(0px) translate(0px);
+    transition: 500ms;
+  }
+  span:nth-child(2) {
+    display: none;
   }
 }
 
@@ -381,18 +445,23 @@ footer {
   .container {
     max-width: 768px;
   }
-  footer{
-    .footer{
+  footer {
+    .footer {
       padding-left: 0;
       padding-right: 0;
       max-width: 100%;
       justify-content: space-between;
-      .footer-search{
-        form{
+      .footer-search {
+        form {
           flex-direction: column;
         }
       }
     }
+  }
+}
+@media (min-width: 768px) {
+  .hamburger-menu {
+    display: none;
   }
 }
 @media (max-width: 768px) {
@@ -401,6 +470,16 @@ footer {
     .navbar {
       ul {
         display: none;
+      }
+      a {
+        display: none;
+      }
+      .hamburger {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        width: 25px;
+        cursor: pointer;
       }
     }
     .hero {
@@ -452,7 +531,7 @@ footer {
       }
     }
   }
-  #cta{
+  #cta {
     .cta {
       flex-direction: column;
       gap: 3rem;
@@ -462,33 +541,31 @@ footer {
       }
     }
   }
-
-  footer{
+  footer {
     padding: 0.5rem;
-    .footer{
+    .footer {
       flex-direction: column-reverse;
       align-items: center;
       gap: 3rem;
       padding: 1.5rem 0;
-      .icons{
+      .icons {
         display: flex;
         flex-direction: column-reverse;
       }
-      .footer-menu{
+      .footer-menu {
         width: 100%;
         justify-content: space-between;
       }
-      .footer-search{
+      .footer-search {
         display: flex;
         width: 100%;
-        form{
+        form {
           flex-direction: row;
-          input{
+          input {
             flex: 1;
           }
-          
         }
-        .copy-right{
+        .copy-right {
           display: none;
         }
       }
@@ -496,5 +573,4 @@ footer {
   }
 }
 @media (max-width: 480px) {
-
 }

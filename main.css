@@ -69,6 +69,36 @@ object {
   max-width: 85%;
   margin: auto;
   padding: 1.5rem;
+  position: relative;
+}
+.container .hamburger-menu, footer .footer .hamburger-menu, #cta .cta .hamburger-menu {
+  flex-direction: column;
+  position: absolute;
+  width: 80%;
+  align-self: center;
+  background-color: #fff;
+  top: 80px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.container .hamburger-menu ul, footer .footer .hamburger-menu ul, #cta .cta .hamburger-menu ul {
+  padding: 1rem 0px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  text-align: center;
+}
+.container .hamburger-menu ul li, footer .footer .hamburger-menu ul li, #cta .cta .hamburger-menu ul li {
+  padding: 0.5rem 0px;
+}
+.container .hamburger-menu ul li:hover, footer .footer .hamburger-menu ul li:hover, #cta .cta .hamburger-menu ul li:hover {
+  background-color: rgba(0, 0, 0, 0.15);
+}
+.container .hamburger-menu ul li > a, footer .footer .hamburger-menu ul li > a, #cta .cta .hamburger-menu ul li > a {
+  text-decoration: none;
+  color: black;
+  font-weight: 700;
 }
 .container .navbar, footer .footer .navbar, #cta .cta .navbar {
   display: flex;
@@ -91,6 +121,13 @@ object {
 }
 .container .navbar ul a:hover, footer .footer .navbar ul a:hover, #cta .cta .navbar ul a:hover {
   color: #9095a7;
+}
+.container .navbar .hamburger, footer .footer .navbar .hamburger, #cta .cta .navbar .hamburger {
+  display: none;
+}
+.container .navbar .hamburger > span, footer .footer .navbar .hamburger > span, #cta .cta .navbar .hamburger > span {
+  border: 1px solid black;
+  transition: 500ms;
 }
 .container .hero, footer .footer .hero, #cta .cta .hero {
   display: flex;
@@ -283,11 +320,15 @@ footer .footer .icons > img {
   height: 2rem;
 }
 footer .footer .icons .social-icons {
+  cursor: pointer;
   display: flex;
   gap: 1rem;
 }
 footer .footer .icons .social-icons img {
   height: 2rem;
+}
+footer .footer .icons .social-icons img:hover {
+  transform: scale(1.1);
 }
 footer .footer .footer-menu {
   display: flex;
@@ -335,6 +376,29 @@ footer .copy-right {
   padding: 2rem;
 }
 
+.show {
+  display: flex;
+}
+
+.hidden {
+  display: none;
+}
+
+.open {
+  transform: translateY(-5px);
+}
+.open span:first-child {
+  transform: rotate(45deg) translateY(5px) translate(5px);
+  transition: 500ms;
+}
+.open span:last-child {
+  transform: rotate(-45deg) translateY(0px) translate(0px);
+  transition: 500ms;
+}
+.open span:nth-child(2) {
+  display: none;
+}
+
 @media (max-width: 1960px) {
   .container, #cta .cta, footer .footer {
     max-width: 1440px;
@@ -359,12 +423,27 @@ footer .copy-right {
     flex-direction: column;
   }
 }
+@media (min-width: 768px) {
+  .hamburger-menu {
+    display: none;
+  }
+}
 @media (max-width: 768px) {
   .container, #cta .cta, footer .footer {
     max-width: 480px;
   }
   .container .navbar ul, #cta .cta .navbar ul, footer .footer .navbar ul {
     display: none;
+  }
+  .container .navbar a, #cta .cta .navbar a, footer .footer .navbar a {
+    display: none;
+  }
+  .container .navbar .hamburger, #cta .cta .navbar .hamburger, footer .footer .navbar .hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 25px;
+    cursor: pointer;
   }
   .container .hero, #cta .cta .hero, footer .footer .hero {
     flex-direction: column-reverse;
